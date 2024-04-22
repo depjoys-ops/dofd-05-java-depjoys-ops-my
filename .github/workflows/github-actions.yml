@@ -25,3 +25,6 @@ jobs:
 
     - name: Build project
       run: mvn clean package
+
+    - name: Show packaged files
+      run: ls -la ./target 
