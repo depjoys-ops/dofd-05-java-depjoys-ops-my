@@ -1,13 +1,17 @@
 name: Java CI with Maven
 
 on:
-  push:
+  pull_request:
     branches: 
       - main
+    types: [opened]
+    
   workflow_dispatch:
 
 jobs:
-  build:
+  build_if_merged:
+  
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     
     steps:
@@ -31,4 +35,4 @@ jobs:
       run: mvn clean package -Dmaven.test.skip=true 
 
     - name: Show packaged in target
-      run: ls -la ./target 
+      run: ls -la ./target      
