@@ -23,8 +23,11 @@ jobs:
         java-version: '17'
     - run: java -version
 
-    - name: Build project
-      run: mvn clean package
+    - name: Run test
+      run: mvn clean test
 
-    - name: Show packaged files
+    - name: Build project
+      run: mvn clean package -Dmaven.test.skip=true 
+
+    - name: Show packaged in target
       run: ls -la ./target 
